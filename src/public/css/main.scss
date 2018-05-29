@@ -8,14 +8,18 @@
 // Scaffolding
 // -------------------------
 
+$link_active: #488bf8;
+$text_normal: #666;
+$main_color_1: #f68a73;
+$main_color_2: #ffdf8f;
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  padding-top: 60px;
-  margin-bottom: 75px;
+  background-color: #eee;
 }
 
 footer {
@@ -37,34 +41,61 @@ textarea {
   resize: vertical;
 }
 
-// Navbar
-// -------------------------
+.main-header {
+  height: 60px;
+  background-color: #fff;
+  padding: 0 16px;
+  color: $text_normal;
 
-.navbar-nav img {
-  width: 30px;
-  height: 30px;
-  margin: -15px 15px -15px;
+
+  .logo {
+    display: inline-block;
+    line-height: 60px;
+  }
+  .logo-image {
+    width: 89px;
+    height: 37px;
+  }
+
+  ul.nav-items {
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+
+      a {
+        display: inline-block;
+        line-height: 60px;
+        padding: 0 10px;
+        color: $text_normal;
+
+        &:active, &:hover, &:focus {
+          text-decoration: none;
+          color: $link_active;
+        }
+      }
+    }
+  }
 }
 
-// Alerts
-// -------------------------
+.tile-container {
+  position: relative;
+  min-height: 700px;
+  padding-top: 56.5%;
+  background-color: $main_color_1;
+  background: linear-gradient($main_color_1, $main_color_2);
 
-.alert {
-  margin-top: 20px;
-}
+  img.sticky-image {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 
-// Thumbnails
-// -------------------------
-
-.thumbnail {
-  padding: 0;
-  border-radius: 0;
-  box-shadow: 0 0 5px #ccc, inset 0 0 0 #000;
-}
-
-// Font Icons
-// -------------------------
-
-.fa {
-  margin-right: 6px;
+  .tile-content {
+    position: fixed;
+    top: 60px;
+    left: 60px;
+  }
 }
