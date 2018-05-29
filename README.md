@@ -1,6 +1,6 @@
 # TypeScript Node Starter
 
-[![Dependency Status](https://david-dm.org/Microsoft/TypeScript-Node-Starter.svg)](https://david-dm.org/shortgiraffe4/goquo) [![Build Status](https://travis-ci.org/shortgiraffe4/goquo.svg?branch=master)](https://travis-ci.org/shortgiraffe4/goquo) 
+[![Dependency Status](https://david-dm.org/shortgiraffe4/goquo.svg)](https://david-dm.org/shortgiraffe4/goquo) [![Build Status](https://travis-ci.org/shortgiraffe4/goquo.svg?branch=master)](https://travis-ci.org/shortgiraffe4/goquo) 
 
 **Live Demo**: [https://typescript-node-starter.azurewebsites.net/](https://typescript-node-starter.azurewebsites.net/)
 
