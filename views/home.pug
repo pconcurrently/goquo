@@ -9,27 +9,60 @@ block content
           h1 HOTELS, RESORTS, HOSTELS & MORE
         .search-box 
           .destination  
-            i.fa.fa-search
-            input(placeholder="Enter destination or property")
-          .start-date-picker
-          .end-date-picker
-          .occupancy-box
-      form.form-horizontal(method='POST')
-        input(type='hidden', name='_csrf', value=_csrf)
-        .form-group
-          label(class='col-sm-2 control-label', for='name') Name
-          .col-sm-8
-            input.form-control(type='text', name='name', id='name', autofocus=true)
-        .form-group
-          label(class='col-sm-2 control-label', for='email') Email
-          .col-sm-8
-            input.form-control(type='text', name='email', id='email')
-        .form-group
-          label(class='col-sm-2 control-label', for='message') Body
-          .col-sm-8
-            textarea.form-control(name='message', id='message', rows='7')
-        .form-group
-          .col-sm-offset-2.col-sm-8
-            button.btn.btn-primary(type='submit')
-              i.fa.fa-envelope
-              | Send
+            i.search-icon.fa.fa-search
+            .input-holder
+              input#destination-input(placeholder="Enter destination or property")
+            .destination-search-results.popup-result
+              ul
+                li 
+                  .result-item
+                    i.fa.fa-hotel &nbsp Cebu, Phillipines
+                li 
+                  .result-item
+                    i.fa.fa-star &nbsp Cebu Club, Phillipines
+                li 
+                  .result-item
+                    i.fa.fa-coffee &nbsp Cebu Central, Phillipines
+          .select-date
+            .start-date
+              .input-group
+                span.input-group-addon
+                  i.fa.fa-calendar
+                input.form-control#start-date-picker()
+            .end-date
+              .input-group
+                span.input-group-addon
+                  i.fa.fa-calendar
+                input.form-control#end-date-picker()
+          .box-and-button      
+            .occupancy-box
+              i.box-icon.fa.fa-users
+              .box-results
+                .box-people
+                  span 3 adults, 0 children
+                .box-rooms 3 rooms
+            .search-button  
+              a(href="#") 
+                span.search-text Search
+        .search-result-backdrop
+block script
+  script.
+      $('#start-date-picker').datetimepicker({
+        format: 'DD MMM YYYY',
+        defaultDate: moment()
+      });
+      $('#end-date-picker').datetimepicker({
+        format: 'DD MMM YYYY',
+        defaultDate: moment().add(1, 'days')
+      });
+
+      $('#destination-input').focus(function() {
+        $('.destination-search-results').css('display', 'block');
+        $('.search-result-backdrop').css('display', 'block');
+      });
+
+      $('.search-result-backdrop').click(function() {
+        $(this).css('display', 'none');
+
+        $('.popup-result').css('display', 'none');
+      })
