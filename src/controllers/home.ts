@@ -9,3 +9,9 @@ export let index = (req: Request, res: Response) => {
     title: "Home"
   });
 };
+
+export let search = (req: Request, res: Response) => {
+  res.render("search", {
+    title: "Search"
+  });
+};
