@@ -621,6 +621,7 @@ span.headline {
       padding: 5px 0px;
       margin-right: 2px;
       background-color: #fff;
+      min-width: 250px;
       i.search-icon {
         padding: 8px;
       }
@@ -716,6 +717,7 @@ span.headline {
         @extend .flex-box;
         background-color: #fff;
         width: 65%;
+        min-width: 165px;
         height: 48px;
         margin-right: 4px;
         .box-results {
@@ -727,6 +729,7 @@ span.headline {
       }
       .search-button {
         width: 35%;
+        min-width: 100px;
         a {
           position: relative;
           @extend .box-shadow;
