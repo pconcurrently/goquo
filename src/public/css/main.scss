@@ -602,3 +602,185 @@ span.headline {
     }
   }
 }
+
+.search-box-2 {
+  background-color: #515b62;
+  padding: 11px 0;
+  max-height: 70px;
+
+  i.loading, span.loading {
+    display: none;
+  }
+
+  .container {
+    @extend .flex-box;
+
+    .destination {
+      position: relative;
+      height: 48px;
+      padding: 5px 0px;
+      margin-right: 2px;
+      background-color: #fff;
+      i.search-icon {
+        padding: 8px;
+      }
+      .input-holder {
+        vertical-align: middle;
+        display: inline-block;
+        padding: 0 10px;
+        input {
+          // width: 270px;
+          height: 38px;
+          border: none;
+          text-transform: capitalize;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .destination-search-results {
+        position: absolute;
+        z-index: 3;
+        top: 90px;
+        background-color: #fff;
+        width: 580px;
+        display: none;
+        @extend .box-shadow;
+        &::before {
+          top: -22px;
+          left: 25px;
+          right: auto;
+          position: absolute;
+          display: inline-block;
+          content: "";
+          border: 11px solid transparent;
+          border-bottom-color: rgba(27, 31, 35, 0.15);
+        }
+        &::after {
+          top: -20px;
+          left: 26px;
+          right: auto;
+          border: 10px solid transparent;
+          border-bottom-color: #fff;
+          position: absolute;
+          display: inline-block;
+          content: "";
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          li {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px 30px;
+            &:hover {
+              background-color: $main_color_1;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    .select-date {
+      @extend .flex-box;
+      height: 48px;
+      padding: 0 2px;
+      .start-date,
+      .end-date {
+        padding: 0;
+        width: 50%;
+        span {
+          background-color: #fff;
+          border: none;
+          i {
+            padding: 10px;
+          }
+        }
+        input {
+          height: 48px;
+          border: none;
+          box-shadow: none;
+        }
+      }
+
+      .start-date {
+        border-right: solid 1px #eee;
+      }
+    }
+
+    .box-and-button {
+      @extend .flex-box;
+      padding: 0 2px;
+      .occupancy-box {
+        @extend .flex-box;
+        background-color: #fff;
+        width: 65%;
+        height: 48px;
+        margin-right: 4px;
+        .box-results {
+          padding: 8px 5px;
+        }
+        .box-icon {
+          padding: 15px 10px;
+        }
+      }
+      .search-button {
+        width: 35%;
+        a {
+          position: relative;
+          @extend .box-shadow;
+          display: block;
+          height: 48px;
+          width: 100%;
+          background-color: $main_color_1;
+          color: #fff;
+          text-transform: uppercase;
+          text-align: center;
+          // margin-left: 20px;
+          border-radius: 0.5px;
+          -webkit-transition: all 1s ease;
+          -moz-transition: all 1s ease;
+          -o-transition: all 1s ease;
+          transition: all 1s ease;
+          overflow: hidden;
+          padding: 16px 0;
+          &:not(.loading)::after {
+            background: $main_color_2;
+            -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+            -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+            -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+            transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 150%;
+            height: 0;
+            z-index: 1;
+            -webkit-transition: all 0.75s ease 0s;
+            -moz-transition: all 0.75s ease 0s;
+            -o-transition: all 0.75s ease 0s;
+            transition: all 0.75s ease 0s;
+          }
+          &:not(.loading):hover::after {
+            height: 450%;
+            -webkit-transition: all 0.75s ease 0s;
+            -moz-transition: all 0.75s ease 0s;
+            -o-transition: all 0.75s ease 0s;
+            transition: all 0.75s ease 0s;
+          }
+          &:not(.loading):hover,
+          &:not(.loading):focus,
+          &:not(.loading):active {
+            text-decoration: none;
+          }
+          .search-text {
+            position: relative;
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
+}
