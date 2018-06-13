@@ -62,13 +62,13 @@ block content
                         .checklist-text
             .col-md-3.top-filter
                 .filter-placeholder
-                        .checklist-box
+                        .checklist-box.rounded
                         .checklist-text
                 .filter-placeholder
-                        .checklist-box
+                        .checklist-box.rounded
                         .checklist-text
                 .filter-placeholder
-                        .checklist-box
+                        .checklist-box.rounded
                         .checklist-text
             .col-md-3.top-filter
                 .filter-placeholder
@@ -76,7 +76,11 @@ block content
                         .checklist-text
         .row
             .col-md-3
-                .map-placeholder
+                .map-container.loading
+                    .map-placeholder
+                    img.map(src="images/map.svg")
+                    img.marker(src="images/pin-marker.svg")
+                    figcaption See Map
                 .filter-container
                     .filter-placeholder
                         .checklist-box
@@ -112,24 +116,241 @@ block content
                         img(src="/images/sup5.png")
                     span.supplier.supplier-6
                         img(src="/images/sup6.png")
-                .dummy-loading
+                .hotels-list.loading
+                    .hotel-item
+                        .thumbnail-preview
+                            img
+                        .hotel-images.col-md-4
+                            img.showcase(src="images/showcase_main.jpg")
+                            .hotel-thumbnails
+                                .image1
+                                    img(src="images/thumb1.jpg")
+                                .image2
+                                    img(src="images/thumb2.jpg")
+                                .image3
+                                    img(src="images/thumb3.jpg")
+                        .hotel-detail.col-md-8
+                            .detail-left.col-sm-8
+                                .hotel-name Galaxy Star Hotel
+                                .rating-location
+                                    span
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                    span.location &nbsp &nbsp
+                                        i.fa.fa-map-marker
+                                        a(href="#") &nbsp Hoan Kiem District, Ha Noi - View on map
+                                .location-review
+                                    i.fa.fa-certificate
+                                    span &nbsp Excellent location
+                                    span &nbsp (Inside city center)
+                                .offers
+                                    .offers-title 
+                                        strong Offers
+                                    ul.offers-items
+                                        li.item
+                                            i.fa.fa-coffee
+                                            span
+                                                strong &nbsp Breakfast
+                                        li.item
+                                            i.fa.fa-television
+                                            span
+                                                strong &nbsp Free Netflix
+                                .options
+                                    .options-title 
+                                        strong Options
+                                    ul.options-items
+                                        li.item
+                                            i.fa.fa-refresh
+                                            span
+                                                strong &nbsp Free cancellation
+                                        li.item
+                                            i.fa.fa-credit-card
+                                            span
+                                                strong &nbsp Pay later
+                            .detail-right.col-sm-4
+                                .review
+                                    div Very Good
+                                    div 79 reviews
+                                .rating-container
+                                    .triangle-pointer
+                                    .rating-square 
+                                        span 7.8
+                    .hotel-item
+                        .thumbnail-preview
+                            img
+                        .hotel-images.col-md-4
+                            img.showcase(src="images/showcase_main2.jpg")
+                            .hotel-thumbnails
+                                .image1
+                                    img(src="images/thumb4.jpg")
+                                .image2
+                                    img(src="images/thumb5.jpg")
+                                .image3
+                                    img(src="images/thumb6.jpg")
+                        .hotel-detail.col-md-8
+                            .detail-left.col-sm-8
+                                .hotel-name THE Hotel
+                                .rating-location
+                                    span
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                    span.location &nbsp &nbsp
+                                        i.fa.fa-map-marker
+                                        a(href="#") &nbsp Hoan Kiem District, Ha Noi - View on map
+                                .location-review
+                                    i.fa.fa-certificate
+                                    span &nbsp Excellent location
+                                    span &nbsp (Inside city center)
+                                .offers
+                                    .offers-title 
+                                        strong Offers
+                                    ul.offers-items
+                                        li.item
+                                            i.fa.fa-wheelchair-alt
+                                            span
+                                                strong &nbsp Free Wheel Chair
+                                        li.item
+                                            i.fa.fa-moon-o
+                                            span
+                                                strong &nbsp Free Moon
+                                .options
+                                    .options-title 
+                                        strong Options
+                                    ul.options-items
+                                        li.item
+                                            i.fa.fa-refresh
+                                            span
+                                                strong &nbsp Free cancellation
+                                        li.item
+                                            i.fa.fa-credit-card
+                                            span
+                                                strong &nbsp Pay later
+                            .detail-right.col-sm-4
+                                .review
+                                    div Excellent
+                                    div 114 reviews
+                                .rating-container
+                                    .triangle-pointer
+                                    .rating-square 
+                                        span 8.3
+                    .hotel-item
+                        .thumbnail-preview
+                            img
+                        .hotel-images.col-md-4
+                            img.showcase(src="images/showcase_main.jpg")
+                            .hotel-thumbnails
+                                .image1
+                                    img(src="images/thumb1.jpg")
+                                .image2
+                                    img(src="images/thumb2.jpg")
+                                .image3
+                                    img(src="images/thumb3.jpg")
+                        .hotel-detail.col-md-8
+                            .detail-left.col-sm-8
+                                .hotel-name Galaxy Star Hotel
+                                .rating-location
+                                    span
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                        i.fa.fa-star
+                                    span.location &nbsp &nbsp
+                                        i.fa.fa-map-marker
+                                        a(href="#") &nbsp Hoan Kiem District, Ha Noi - View on map
+                                .location-review
+                                    i.fa.fa-certificate
+                                    span &nbsp Excellent location
+                                    span &nbsp (Inside city center)
+                                .offers
+                                    .offers-title 
+                                        strong Offers
+                                    ul.offers-items
+                                        li.item
+                                            i.fa.fa-coffee
+                                            span
+                                                strong &nbsp Breakfast
+                                        li.item
+                                            i.fa.fa-television
+                                            span
+                                                strong &nbsp Free Netflix
+                                .options
+                                    .options-title 
+                                        strong Options
+                                    ul.options-items
+                                        li.item
+                                            i.fa.fa-refresh
+                                            span
+                                                strong &nbsp Free cancellation
+                                        li.item
+                                            i.fa.fa-credit-card
+                                            span
+                                                strong &nbsp Pay later
+                            .detail-right.col-sm-4
+                                .review
+                                    div Very Good
+                                    div 79 reviews
+                                .rating-container
+                                    .triangle-pointer
+                                    .rating-square 
+                                        span 7.8
+                .dummy-loading.loading
                     .thumbnail.col-md-4
                     .text.col-md-8
                         .textline.line-1
                         .textline.line-2
                         .textline.line-3
                         .textline.line-4
-                .dummy-loading
+                .dummy-loading.loading
                     .thumbnail.col-md-4
                     .text.col-md-8
                         .textline.line-1
                         .textline.line-2
                         .textline.line-3
                         .textline.line-4
-                .dummy-loading
+                .dummy-loading.loading
                     .thumbnail.col-md-4
                     .text.col-md-8
                         .textline.line-1
                         .textline.line-2
                         .textline.line-3
                         .textline.line-4
+
+block script
+    script.
+        var timer;
+
+        setTimeout(function() {
+            $(".loading").removeClass("loading");
+
+            $('#start-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment()
+            });
+            $('#end-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment().add(1, 'days')
+            });
+        }, 3000)
+
+        $('.hotel-thumbnails img').hover(function() {
+            var thisPreview = $($(this).parents().parents().parents(".hotel-item").children('.thumbnail-preview'));
+            var source_image = $(this).attr('src');
+            thisPreview.children('img').attr('src', source_image);
+            thisPreview.css('display', 'block');
+            if(timer) {
+                clearTimeout(timer);
+            }
+        })
+
+        $('.hotel-thumbnails img').mouseleave(function() {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                $('.thumbnail-preview img').attr('src', '');
+                $('.thumbnail-preview').css('display', 'none');
+            }, 200)
+        })
