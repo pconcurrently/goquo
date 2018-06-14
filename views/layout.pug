@@ -9,8 +9,9 @@ html(lang='')
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
     link(rel='shortcut icon', href='/images/favicon.png')
+    link(rel='stylesheet', href='/css/others/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/css/others/jquery-ui.min.css')
     link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='/css/datetimepicker/bootstrap-datetimepicker.min.css')
 
   body
     include partials/header
@@ -22,6 +23,7 @@ html(lang='')
     script(src='/js/lib/moment.js')
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/lib/bootstrap-datetimepicker.min.js')
+    script(src='/js/lib/jquery-ui.min.js')
     script(async defer src="https://buttons.github.io/buttons.js")
     script(src='/js/main.js')
     block script

@@ -3,7 +3,8 @@ extends layout
 block content
   section.tile-container
     img.sticky-image(src="images/skyline.png")
-    section.tile-content
+    section.tile-content-wrapper
+    .tile-content
       .form-banner
         .welcome-message
           h1 HOTELS, RESORTS, HOSTELS & MORE
@@ -48,6 +49,17 @@ block content
               a(href="/search") 
                 span.search-text Search
         .search-result-backdrop
+    section.tile-promotion
+      .row
+        .col-md-6.square-tile
+          img(src="images/promote1_background.png")
+        .col-md-6.square-tile
+          img(src="images/promote1_background.png")
+      .row
+        .col-md-6.square-tile
+          img(src="images/promote1_background.png")
+        .col-md-6.square-tile
+          img(src="images/promote1_background.png")
 block script
   script.
       $('#start-date-picker').datetimepicker({
