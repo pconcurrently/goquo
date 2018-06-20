@@ -1,0 +1,52 @@
+.main-header {
+    height: 60px;
+    background-color: #fff;
+    padding: 0 16px;
+    color: $text_normal;
+    .logo {
+        display: inline-block;
+        line-height: 60px;
+    }
+    .logo-image {
+        width: 89px;
+        height: 37px;
+    }
+    ul.nav-items {
+        display: inline-block;
+        li {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            margin-right: 4px;
+            a {
+                position: relative;
+                display: inline-block;
+                line-height: 60px;
+                padding: 0 10px;
+                color: $text_normal;
+                font-weight: 700;
+                &:active::after,
+                &:hover,
+                &:focus,
+                &.active {
+                    text-decoration: none;
+                    color: $link_active;
+                }
+                &::after {
+                    content: '';
+                    width: 0;
+                    height: 4px;
+                    background-color: $link_active;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    transition: width .4s ease-in-out;
+                }
+                &:hover::after,
+                &.active::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

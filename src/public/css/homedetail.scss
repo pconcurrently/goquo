@@ -1,0 +1,115 @@
+.detail-wrapper {
+    height: calc(70vh + 20px);
+}
+
+.detail-container {
+    width: 100%;
+    position: absolute;
+    top: inherit;
+    height: 70vh;
+    min-height: 450px;
+    left: 0;
+    margin-top: 20px;
+    .image-tile {
+        animation: none;
+        position: absolute;
+        overflow: hidden;
+        background-color: #eee;
+        z-index: 2;
+        &:not(.loading) {
+            cursor: pointer;
+        }
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+        .dark-overlay {
+            background-color: rgba(0, 0, 0, 0);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            transition: background-color .3s ease-in-out;
+            .view-more {
+                position: absolute;
+                bottom: 30px;
+                left: 15px;
+                color: #fff;
+                transition: opacity .3s ease-in-out;
+                opacity: 0;
+                ;
+            }
+        }
+    }
+    .image-tile.loading {
+        @extend .animated-background-2;
+        background-color: #ccc;
+        img {
+            display: none;
+        }
+    }
+    .image-tile:not(.loading):hover {
+        .dark-overlay {
+            background-color: rgba(0, 0, 0, .3);
+        }
+        .view-more {
+            opacity: 1;
+        }
+    }
+    .image-tile-1 {
+        width: 60%;
+        height: 70%;
+        margin-right: 4px;
+        left: 0;
+    }
+    .image-tile-2 {
+        width: calc(40% - 4px);
+        height: 55%;
+        right: 0;
+    }
+    .image-tile-3 {
+        height: calc(30% - 4px);
+        width: 24%;
+        top: calc(70% + 4px);
+        left: 0;
+    }
+    .image-tile-4 {
+        height: calc(30% - 4px);
+        width: calc(36% - 4px);
+        top: calc(70% + 4px);
+        left: calc(24% + 4px);
+    }
+    .image-tile-5 {
+        height: calc(100% - 55% - 4px);
+        width: 24%;
+        top: calc(55% + 4px);
+        right: calc(16% - 4px);
+    }
+    .image-tile-6 {
+        height: calc(31.5% - 4px);
+        width: calc(16% - 8px);
+        top: calc(55% + 4px);
+        right: 0;
+    }
+    .image-tile-7 {
+        height: calc(13.5% - 4px);
+        width: calc(16% - 8px);
+        top: calc(55% + 31.5% + 4px);
+        right: 0;
+    }
+}
+
+.hotel-info.loading {
+    display: none;
+}
+
+.hotel-info {
+    display: block;
+}
