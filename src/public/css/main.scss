@@ -89,6 +89,14 @@ footer {
      background-position: 468px 0;
    }
  }
+ @keyframes flash {
+   0%, 100% {
+     opacity: 0.2;
+   }
+   50% {
+     opacity: 0.4;
+   }
+ }
  @keyframes supplier-slide-in-1 {
    0% {
      opacity: 0;
@@ -203,6 +211,13 @@ footer {
    background-size: 800px 104px;
    height: 96px;
    position: relative;
+ }
+ .animated-background-2 {
+   -webkit-animation: 1.5s flash ease-in-out;
+   animation: 1.5s flash ease-in-out;
+   background: #fff;
+   animation-fill-mode: forwards;
+   animation-iteration-count: infinite;
  }
 
 // Input Fields
@@ -380,11 +395,16 @@ textarea {
   display: table;
 
   .welcome-message {
+    opacity: 1;
+    display: inline-block;
     color: #fff;
     padding: 40px 0;
     h1 {
       font-size: calc(26px + 8 * ((100vw - 1280px)/ 640));
     }
+  }
+  .welcome-message.loading {
+    opacity: 0;
   }
 
   img.sticky-image {
@@ -423,11 +443,69 @@ textarea {
   }
   .tile-promotion {
     position: relative;
-    left: -10px;
-    right: 10px;
+    // left: -10px;
+    // right: 10px;
     display: table-cell;
     vertical-align: middle;
     width: 50%;
+    padding: 30px 0;
+    color: #fff;
+
+    .btn {
+      color: #000;
+      margin-top: 30px;
+    }
+    .square-tile.loading,
+    .double-square-tile.loading {
+      @extend .animated-background-2;
+      opacity: 0.4;
+      img {
+        display: none;
+      }
+      .detail {
+        display: none;
+      }
+    }
+    .square-tile {
+      width: calc(50% - 10px);
+      background-color: #333;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding-top: 44%;
+
+      img {
+        display: block;
+        position: absolute;
+        top: 20px;
+        width: 90%;
+        left: 5%;
+      }
+
+      .detail {
+        display: block;
+        width: calc(100% - 30px);
+        text-align: center;
+        position: absolute;
+        top: 20%;
+
+        small {
+          display: inline-block;
+          width: 100%;
+        }
+      }
+    }
+    .double-square-tile {
+      width: calc(100% - 10px);
+      padding: 0;
+      margin-bottom: 10px;
+      padding-top: 46%;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+      }
+    }
   }
 }
 
@@ -436,6 +514,12 @@ textarea {
   width: 580px;
   font-size: 16px;
   z-index: 1002;
+
+  i.loading,
+  span.loading {
+    display: none;
+  }
+
   input {
     width: 460px;
     cursor: pointer;
@@ -575,7 +659,7 @@ textarea {
         overflow: hidden;
         padding: 29px 0;
 
-        &::after { 
+        &:not(.loading)::after { 
           background: $main_color_2;
           -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
           -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
@@ -593,7 +677,7 @@ textarea {
           -o-transition: all 0.75s ease 0s;
           transition: all 0.75s ease 0s;
         }
-        &:hover::after {
+        &:not(.loading):hover::after {
           height: 450%;
           -webkit-transition: all 0.75s ease 0s;
           -moz-transition: all 0.75s ease 0s;

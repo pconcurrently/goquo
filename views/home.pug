@@ -6,27 +6,27 @@ block content
     section.tile-content-wrapper
     .tile-content
       .form-banner
-        .welcome-message
+        .welcome-message.loading
           h1 HOTELS, RESORTS, HOSTELS & MORE
         .search-box 
           .destination  
             i.search-icon.fa.fa-search
             .input-holder
-              input#destination-input(placeholder="Enter destination or property")
+              input#destination-input(placeholder="Enter destination or property", value="Ha Noi")
             .destination-search-results.popup-result
               ul
                 li 
                   .result-item
                     i.fa.fa-hotel 
-                    span &nbsp Cebu, Phillipines
+                    span &nbsp Ha Noi, Viet Nam
                 li 
                   .result-item
                     i.fa.fa-star
-                    span &nbsp Cebu Club, Phillipines
+                    span &nbsp Ha Noi Club, Viet Nam
                 li 
                   .result-item
                     i.fa.fa-coffee
-                    span &nbsp Cebu Central, Phillipines
+                    span &nbsp Ha Noi Central, Viet Nam
           .select-date
             .start-date
               .input-group
@@ -43,33 +43,69 @@ block content
               i.box-icon.fa.fa-users
               .box-results
                 .box-people
-                  span 3 adults, 0 children
-                .box-rooms 3 rooms
+                  span.loading  3 adults, 0 children
+                .box-rooms
+                  span.loading  3 rooms
             .search-button  
-              a(href="/search") 
-                span.search-text Search
+              a.loading(href="/search") 
+                span.loading.search-text Search
         .search-result-backdrop
     section.tile-promotion
-      .row
-        .col-md-6.square-tile
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
           img(src="images/promote1_background.png")
-        .col-md-6.square-tile
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
           img(src="images/promote1_background.png")
-      .row
-        .col-md-6.square-tile
+        .col-md-12.double-square-tile.loading
+          img(src="images/promote2_background.jpg", style="width: 100%")
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
           img(src="images/promote1_background.png")
-        .col-md-6.square-tile
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
+          img(src="images/promote1_background.png")
+        .col-md-12.double-square-tile.loading
+          img(src="images/promote2_background.jpg", style="width: 100%")
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
+          img(src="images/promote1_background.png")
+        .col-md-6.square-tile.loading
+          .detail
+            h3 Drop prices up to 30%
+            small Sign in now for member-only deal
+            button.btn Sign in now
           img(src="images/promote1_background.png")
 block script
   script.
-      $('#start-date-picker').datetimepicker({
-        format: 'DD MMM YYYY',
-        defaultDate: moment()
-      });
-      $('#end-date-picker').datetimepicker({
-        format: 'DD MMM YYYY',
-        defaultDate: moment().add(1, 'days')
-      });
+      setTimeout(function() {
+            $(".loading").removeClass("loading");
+
+            $('#start-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment()
+            });
+            $('#end-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment().add(1, 'days')
+            });
+            setAmounts();
+        }, 3000)
 
       $('#destination-input').focus(function() {
         $('.destination-search-results').css('display', 'block');
@@ -79,5 +115,9 @@ block script
       $('.search-result-backdrop').click(function() {
         $(this).css('display', 'none');
 
+        $('.popup-result').css('display', 'none');
+      })
+      $('.popup-result ul li').click(function() {
+        $('.search-result-backdrop').css('display', 'none');
         $('.popup-result').css('display', 'none');
       })
