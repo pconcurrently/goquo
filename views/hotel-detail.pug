@@ -6,7 +6,7 @@ block content
             .destination.col-sm-4
                 i.search-icon.fa.fa-search
                 .input-holder
-                    input#destination-input(value="Ha Noi")
+                    input#destination-input(value="Galaxy Star Hotel")
                 .destination-search-results.popup-result
                     ul
                         li 
@@ -40,45 +40,58 @@ block content
                             span.loading 3 adults, 0 children
                         .box-rooms 
                             span.loading 3 rooms
-                .search-button  
-                    a.loading(href="#") 
+                .search-button
+                    a.loading 
                         span.search-text.loading Search
-    .detail-container
-        .image-tile.loading.image-tile-1
-            img(src="images/showcase_main.jpg")
-            .dark-overlay
-                .view-more
-                    h4 View more
-        .image-tile.loading.image-tile-2
-            img(src="images/thumb2.jpg")
-            .dark-overlay
-                .view-more
-                    h4 View more
-        .image-tile.loading.image-tile-3
-            img(src="images/lobby1.jpg")
-            .dark-overlay
-                .view-more
-                    h4 View more
-        .image-tile.loading.image-tile-4
-            img(src="images/lobby2.jpg")
-            .dark-overlay
-                .view-more
-                    h4 View more
-        .image-tile.loading.image-tile-5
-            img(src="images/exterior.png")
-            .dark-overlay
-                .view-more
-                    h4 View more
-        .image-tile.loading.image-tile-6
-            img(src="images/map-2.svg")
-            .dark-overlay
-                .view-more
-                    h4 See map
-        .image-tile.loading.image-tile-7
-            img(src="images/thumb3.jpg")
-            .dark-overlay
-                .view-more
-                    h4 View all photos
+    .detail-wrapper
+        .detail-container
+            .image-tile.loading.image-tile-1
+                img(src="images/showcase_main.jpg")
+                .dark-overlay
+                    .view-more
+                        h4 View more
+            .image-tile.loading.image-tile-2
+                img(src="images/thumb2.jpg")
+                .dark-overlay
+                    .view-more
+                        h4 View more
+            .image-tile.loading.image-tile-3
+                img(src="images/lobby1.jpg")
+                .dark-overlay
+                    .view-more
+                        h4 View more
+            .image-tile.loading.image-tile-4
+                img(src="images/lobby2.jpg")
+                .dark-overlay
+                    .view-more
+                        h4 View more
+            .image-tile.loading.image-tile-5
+                img(src="images/exterior.png")
+                .dark-overlay
+                    .view-more
+                        h4 View more
+            .image-tile.loading.image-tile-6
+                img(src="images/map-2.svg")
+                .dark-overlay
+                    .view-more
+                        h4 See map
+            .image-tile.loading.image-tile-7
+                img(src="images/thumb3.jpg")
+                .dark-overlay
+                    .view-more
+                        h4 View all photos
+    .hotel-info.container.loading
+        .col-md-8
+            h3 Galaxy Star Hotel &nbsp
+                small
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+            a(href="#") 
+                i.fa.fa-map-marker 
+                span &nbsp Hoan Kiem District, Ha Noi - View on map
+        .col-md-4
 block script
     script.
         setTimeout(function() {

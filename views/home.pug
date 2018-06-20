@@ -47,8 +47,9 @@ block content
                 .box-rooms
                   span.loading  3 rooms
             .search-button  
-              a.loading(href="/search") 
+              a.loading
                 span.loading.search-text Search
+              .loader
         .search-result-backdrop
     section.tile-promotion
         .col-md-6.square-tile.loading
@@ -120,4 +121,11 @@ block script
       $('.popup-result ul li').click(function() {
         $('.search-result-backdrop').css('display', 'none');
         $('.popup-result').css('display', 'none');
+      })
+
+      $(".search-button").click(function() {
+        $(this).addClass('on-load');
+        setTimeout(function() {
+            location.href = "/search";
+        }, 2500);
       })
