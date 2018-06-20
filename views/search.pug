@@ -6,7 +6,7 @@ block content
             .destination.col-sm-4
                 i.search-icon.fa.fa-search
                 .input-holder
-                    input#destination-input
+                    input#destination-input(value="Ha Noi")
                 .destination-search-results.popup-result
                     ul
                         li 
@@ -499,4 +499,8 @@ block script
                 $('.thumbnail-preview img').attr('src', '');
                 $('.thumbnail-preview').css('display', 'none');
             }, 200)
+        })
+
+        $('.hotel-item').click(function() {
+            location.href = "/hotel-detail";
         })

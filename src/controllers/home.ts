@@ -15,3 +15,9 @@ export let search = (req: Request, res: Response) => {
     title: "Search"
   });
 };
+
+export let hotelDetail = (req: Request, res: Response) => {
+  res.render("hotel-detail", {
+    title: "Hotel Detail"
+  });
+};

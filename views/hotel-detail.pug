@@ -1,0 +1,95 @@
+extends layout
+
+block content
+    .search-box-2
+        .container
+            .destination.col-sm-4
+                i.search-icon.fa.fa-search
+                .input-holder
+                    input#destination-input(value="Ha Noi")
+                .destination-search-results.popup-result
+                    ul
+                        li 
+                        .result-item
+                            i.fa.fa-hotel 
+                            span &nbsp Cebu, Phillipines
+                        li 
+                        .result-item
+                            i.fa.fa-star
+                            span &nbsp Cebu Club, Phillipines
+                        li 
+                        .result-item
+                            i.fa.fa-coffee
+                            span &nbsp Cebu Central, Phillipines
+            .select-date.col-sm-4
+                .start-date
+                    .input-group
+                        span.input-group-addon
+                            i.fa.fa-calendar
+                        input.form-control#start-date-picker
+                .end-date
+                    .input-group
+                        span.input-group-addon
+                            i.fa.fa-calendar
+                        input.form-control#end-date-picker
+            .box-and-button.col-sm-4    
+                .occupancy-box
+                    i.box-icon.fa.fa-users
+                    .box-results
+                        .box-people
+                            span.loading 3 adults, 0 children
+                        .box-rooms 
+                            span.loading 3 rooms
+                .search-button  
+                    a.loading(href="#") 
+                        span.search-text.loading Search
+    .detail-container
+        .image-tile.loading.image-tile-1
+            img(src="images/showcase_main.jpg")
+            .dark-overlay
+                .view-more
+                    h4 View more
+        .image-tile.loading.image-tile-2
+            img(src="images/thumb2.jpg")
+            .dark-overlay
+                .view-more
+                    h4 View more
+        .image-tile.loading.image-tile-3
+            img(src="images/lobby1.jpg")
+            .dark-overlay
+                .view-more
+                    h4 View more
+        .image-tile.loading.image-tile-4
+            img(src="images/lobby2.jpg")
+            .dark-overlay
+                .view-more
+                    h4 View more
+        .image-tile.loading.image-tile-5
+            img(src="images/exterior.png")
+            .dark-overlay
+                .view-more
+                    h4 View more
+        .image-tile.loading.image-tile-6
+            img(src="images/map-2.svg")
+            .dark-overlay
+                .view-more
+                    h4 See map
+        .image-tile.loading.image-tile-7
+            img(src="images/thumb3.jpg")
+            .dark-overlay
+                .view-more
+                    h4 View all photos
+block script
+    script.
+        setTimeout(function() {
+            $(".loading").removeClass("loading");
+
+            $('#start-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment()
+            });
+            $('#end-date-picker').datetimepicker({
+                format: 'DD MMM YYYY',
+                defaultDate: moment().add(1, 'days')
+            });
+        }, 3000)
