@@ -1,0 +1,71 @@
+mixin hotel-item(hotel)
+    .hotel-item
+        .thumbnail-preview
+            img
+        .hotel-images.col-sm-4
+            img.showcase(src=hotel.showcase)
+            .hotel-thumbnails
+                .image1
+                    img(src=hotel.thumb1)
+                .image2
+                    img(src=hotel.thumb2)
+                .image3
+                    img(src=hotel.thumb3)
+        .hotel-detail.col-sm-8
+            .detail-left.col-sm-8
+                .hotel-name= hotel.name
+                .rating-location
+                    span
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                    span.location &nbsp &nbsp
+                        i.fa.fa-map-marker
+                        a(href="#", data-toggle="tooltip", title="Hoan Kiem district is a great choice....") &nbsp Hoan Kiem District, Ha Noi - View on map
+                .location-review
+                    i.fa.fa-certificate
+                    span &nbsp Excellent location
+                    span &nbsp (Inside city center)
+                .offers
+                    .offers-title 
+                        strong Offers
+                    ul.offers-items
+                        li.item
+                            i.fa.fa-wheelchair-alt
+                            span
+                                strong &nbsp Free Wheel Chair
+                        li.item
+                            i.fa.fa-moon-o
+                            span
+                                strong &nbsp Free Moon
+                .options
+                    .options-title 
+                        strong Options
+                    ul.options-items
+                        li.item
+                            i.fa.fa-refresh
+                            span
+                                strong &nbsp Free cancellation
+                        li.item
+                            i.fa.fa-credit-card
+                            span
+                                strong &nbsp Pay later
+                .services
+                    ul.list-services
+                        li 
+                            i.fa.fa-automobile
+                        li 
+                            i.fa.fa-gamepad
+                        li 
+                            i.fa.fa-motorcycle
+                        li 
+                            i.fa.fa-wifi
+            .detail-right.col-sm-4
+                .review
+                    div Excellent
+                    div 114 reviews
+                .rating-container
+                    .triangle-pointer
+                    .rating-square 
+                        span= hotel.rating
