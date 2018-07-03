@@ -1,0 +1,23 @@
+mixin mapHotelItem(item)
+    li
+        .item-thumb
+            img(src=item.image)
+        .item-description
+            h4= item.hotelName
+            .rating-location
+                    span
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+            .rating-container= item.ratingComment
+                    .triangle-pointer
+                    .rating-square 
+                        span= item.rating
+            ul.list-services
+                        li  
+                            i.fa.fa-gamepad 
+                                span &nbsp Gamepad
+                        li  
+                            i.fa.fa-wifi 
+                                span &nbsp Wifi

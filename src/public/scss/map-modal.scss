@@ -1,0 +1,113 @@
+.map-modal {
+    width: 98%;
+    height: 94%;
+}
+.google-map-container {
+    height: 90vh;
+    width: 100%;
+}
+.scrollable-list {
+    height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: gray;
+    }
+}
+ul.map-hotel-items {
+    padding-left: 0;
+    li {
+        margin-bottom: 20px;
+        @extend .flex-box;
+        border: 1px solid hsla(0,0%,59%,.42);
+        transition: box-shadow .3s ease-in-out;
+        list-style: none;
+        &:hover {
+            box-shadow: 2px 4px 6px 1px rgba(0,0,0,.2);
+        }
+        .item-thumb {
+            overflow: hidden;
+            width: 150px;
+            img {
+                -webkit-transform: translateX(-25%);
+                transform: translateX(-25%);
+            }
+        }
+        .item-description {
+            width: calc(100% - 150px);
+            padding: 0 12px;
+            h4 {
+                margin: 6px 0;
+            }
+            ul.list-services {
+                @extend .flex-box;
+                padding: 0;
+                li {
+                    list-style: none;
+                    color: #63c355;
+                    margin-right: 6px;
+                    border: none;
+                    font-size: 12px;
+                    font-weight: 400;
+                    span {
+                        font-family: mallory, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    }
+                }
+            }
+            .rating-location {
+                margin-bottom: 6px;
+            }
+            .rating-container {
+                @extend .flex-box;
+                position: relative;
+                height: 30px;
+                padding-left: 38px;
+                .triangle-pointer {
+                    width: 8px;
+                    height: 8px;
+                }
+                .review {
+                    font-size: 12px;
+                }
+                .rating-square {
+                    background-color: #488bf8;
+                    color: #fff;
+                    width: 30px;
+                    height: 26px;
+                    border-radius: 4px;
+                    border-top-right-radius: 0;
+                    display: inline-block;
+                    text-align: center;
+                    line-height: 26px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-left: 0;
+                    margin-top: -4px;
+                    position: absolute;
+                    left: 0;
+                    span {
+                        position: absolute;
+                        margin-left: -5px;
+                    }
+                }
+                .rating-square::after {
+                    content: '';
+                    border-top: 7px solid #488bf8;
+                    border-right: 10px solid white;
+                    width: 7px;
+                    height: 6px;
+                    display: inline-block;
+                    position: relative;
+                    right: -20px;
+                    top: -11px;
+                }
+            }
+        }
+    }
+}

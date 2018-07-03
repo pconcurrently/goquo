@@ -1,10 +1,12 @@
 extends layout
 include mixins/hotel-item
+include mixins/map-modal
 block content
-    - var hotel1 = {name: "THE Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7.3}
-    - var hotel2 = {name: "Marvel City Hotel", showcase: "images/showcase_main2.jpg", thumb1: "images/thumb4.jpg", thumb2: "images/thumb5.jpg", thumb3: "images/thumb6.jpg", rating: 8.2}
-    - var hotel3 = {name: "John Cena Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7}
+    - var hotel1 = {name: "THE Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7.3, ratingComment: "Very good", numberReviews: 88}
+    - var hotel2 = {name: "ABC Hotel", showcase: "images/showcase_main2.jpg", thumb1: "images/thumb4.jpg", thumb2: "images/thumb5.jpg", thumb3: "images/thumb6.jpg", rating: 8.2, ratingComment: "Excellent", numberReviews: 114}
+    - var hotel3 = {name: "Grand Hotel", showcase: "images/showcase_main.jpg", thumb1: "images/thumb1.jpg", thumb2: "images/thumb2.jpg", thumb3: "images/thumb3.jpg", rating: 7, ratingComment: "Very good", numberReviews: 56}
     .search-box-2
+        .search-result-backdrop
         .container
             .destination.col-sm-4
                 i.search-icon.fa.fa-search
@@ -12,16 +14,13 @@ block content
                     input#destination-input(value="Ha Noi")
                 .destination-search-results.popup-result
                     ul
-                        li 
-                        .result-item
+                        li.result-item
                             i.fa.fa-hotel 
                             span &nbsp Ha Noi, Viet Nam
-                        li 
-                        .result-item
+                        li.result-item
                             i.fa.fa-star
                             span &nbsp Ha Noi Club, Viet Nam
-                        li 
-                        .result-item
+                        li.result-item
                             i.fa.fa-coffee
                             span &nbsp Ha Noi Central, Viet Nam
             .select-date.col-sm-4
@@ -30,19 +29,42 @@ block content
                         span.input-group-addon
                             i.fa.fa-calendar
                         input.form-control#start-date-picker
-                .end-date
-                    .input-group
-                        span.input-group-addon
-                            i.fa.fa-calendar
-                        input.form-control#end-date-picker
+                //- .end-date
+                //-     .input-group
+                //-         span.input-group-addon
+                //-             i.fa.fa-calendar
+                //-         input.form-control#end-date-picker
             .box-and-button.col-sm-4    
                 .occupancy-box
                     i.box-icon.fa.fa-users
                     .box-results
                         .box-people
-                            span.loading 3 adults, 0 children
-                        .box-rooms 
-                            span.loading 3 rooms
+                            span.loading.adults-text 3 adults, 
+                            span.loading.children-text 0 children
+                        .box-rooms  
+                            span.loading.rooms 3 rooms
+                    .occupancy-edit.popup-result
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Rooms
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="3") 3
+                            span.unit Adults
+                            span.plus
+                                i.fa.fa-plus
+                        .plusminusrow
+                            span.minus
+                                i.fa.fa-minus
+                            span.amount(data-amount="0", data-allow-zero="true") 0
+                            span.unit Children
+                            span.plus
+                                i.fa.fa-plus
                 .search-button  
                     a.loading(href="#") 
                         span.search-text.loading Search
@@ -157,7 +179,7 @@ block content
                         input.filter-search(placeholder="Property name or keyword")
         .row
             .col-sm-3
-                .map-container.loading
+                .map-container.loading(data-toggle="modal" data-target="#map-modal")
                     .map-placeholder
                     img.map(src="images/map.svg")
                     img.marker(src="images/pin-marker.svg")
@@ -243,6 +265,7 @@ block content
                         .textline.line-3
                         .textline.line-4
 
+    +mapModal
 block script
     script.
         var timer;
@@ -267,14 +290,13 @@ block script
         setTimeout(function() {
             $(".loading").removeClass("loading");
 
-            //- $('#start-date-picker').datetimepicker({
-            //-     format: 'DD MMM YYYY',
-            //-     defaultDate: moment()
-            //- });
-            //- $('#end-date-picker').datetimepicker({
-            //-     format: 'DD MMM YYYY',
-            //-     defaultDate: moment().add(1, 'days')
-            //- });
+            $('#start-date-picker').daterangepicker({
+                "autoApply": true,
+                "startDate": moment(),
+                "endDate": moment().add(1, 'days')
+            }, function(start, end, label) {
+            });
+            
             setAmounts();
             $(document).tooltip({
                 position: {
@@ -308,8 +330,66 @@ block script
             location.href = "/hotel-detail";
         })
 
-        //- $('[data-toggle="tooltip"]').hover(function() {
-        //-     interval = clearInterval(interval);
-        //- }, function() {
-        //-     interval = setInterval(flip, 5000);
-        //- });
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('google-map'), {
+            center: {lat: 21.008164, lng: 105.791835},
+            zoom: 16
+            });
+        }
+        
+        $('.occupancy-box').click(function() {
+            $('.occupancy-edit').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('#destination-input').click(function() {
+            $('.destination-search-results').css('display', 'block');
+            $('.search-result-backdrop').css('display', 'block');
+        });
+        $('.search-result-backdrop').click(function() {
+            $(this).css('display', 'none');
+
+            $('.popup-result').css('display', 'none');
+        })
+        $('.popup-result ul li').click(function() {
+            $('.search-result-backdrop').css('display', 'none');
+            $('.popup-result').css('display', 'none');
+        })
+
+        function setSpanText(unit, amount) {
+            if (unit === 'Adults') {
+                $('span.adults-text').text(amount + ' adults, ');
+            } else if (unit === 'Children') {
+                $('span.children-text').text(amount + ' children');
+            } else {
+                $('span.rooms').text(amount + ' rooms');
+            }
+        }
+
+        $('span.minus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var allowZero = $amount.attr('data-allow-zero');
+            var unit = $unit.text();
+            if (amount > 1 || ( allowZero && amount == 1)) {
+            amount--;
+            $amount.attr('data-amount', amount);
+            $amount.text(amount);
+
+            setSpanText(unit, amount);
+            };
+        })
+        $('span.plus').click(function() {
+            var $amount = $(this).siblings('.amount');
+            var $unit = $(this).siblings('.unit');
+
+            var amount = $amount.attr('data-amount');
+            var unit = $unit.text();
+
+            amount++;
+            $amount.attr('data-amount', amount);
+            $amount.text(amount);
+
+            setSpanText(unit, amount);
+        })

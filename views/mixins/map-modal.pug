@@ -1,0 +1,21 @@
+mixin mapModal()
+  include map-hotel-item
+  - var item1 = {image: "images/map-hotel-1.jpg", hotelName: "THE Hotel", rating: 8.3, ratingComment: "Excellent"}
+  - var item2 = {image: "images/map-hotel-2.jpg", hotelName: "ABC Hotel", rating: 7.3, ratingComment: "Very Good"}
+  - var item3 = {image: "images/map-hotel-3.jpg", hotelName: "Grand Hotel", rating: 7.1, ratingComment: "Very Good"}
+  - var item4 = {image: "images/map-hotel-4.jpg", hotelName: "NO Hotel", rating: 8.1, ratingComment: "Excellent"}
+  #map-modal.modal.fade(role='dialog')
+      .map-modal.modal-dialog.modal-lg
+          // Modal content
+          .modal-content
+            .modal-body
+              .row  
+                .col-md-5.scrollable-list
+                  ul.map-hotel-items
+                    +mapHotelItem(item1)
+                    +mapHotelItem(item2)
+                    +mapHotelItem(item3)
+                    +mapHotelItem(item4)
+                .col-md-7
+                  .google-map-container#google-map
+      

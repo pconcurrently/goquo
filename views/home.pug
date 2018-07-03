@@ -4,52 +4,77 @@ block content
   section.tile-container
     img.sticky-image(src="images/skyline.png")
     section.tile-content-wrapper
-    .tile-content
-      .form-banner
-        .welcome-message.loading
-          h1 HOTELS, RESORTS, HOSTELS & MORE
-        .search-box 
-          .destination  
-            i.search-icon.fa.fa-search
-            .input-holder
-              input#destination-input(placeholder="Enter destination or property", value="Ha Noi")
-            .destination-search-results.popup-result
-              ul
-                li 
-                  .result-item
-                    i.fa.fa-hotel 
-                    span &nbsp Ha Noi, Viet Nam
-                li 
-                  .result-item
-                    i.fa.fa-star
-                    span &nbsp Ha Noi Club, Viet Nam
-                li 
-                  .result-item
-                    i.fa.fa-coffee
-                    span &nbsp Ha Noi Central, Viet Nam
-          .select-date
-            .start-date
-              .input-group
-                span.input-group-addon
-                  i.fa.fa-calendar
-                input.form-control#start-date-picker
-            .end-date
-              .input-group
-                span.input-group-addon
-                  i.fa.fa-calendar
-                input.form-control#end-date-picker
-          .box-and-button      
-            .occupancy-box
-              i.box-icon.fa.fa-users
-              .box-results
-                .box-people
-                  span.loading  3 adults, 0 children
-                .box-rooms
-                  span.loading  3 rooms
-            .search-button  
-              a.loading
-                span.loading.search-text Search
-              .loader
+      .tile-content
+        .form-banner
+          .welcome-message.loading
+            h1 HOTELS, RESORTS, HOSTELS & MORE
+          .search-box 
+            .destination  
+              i.search-icon.fa.fa-search
+              .input-holder
+                input#destination-input(placeholder="Enter destination or property", value="Ha Noi")
+              .destination-search-results.popup-result
+                ul
+                  li 
+                    .result-item
+                      i.fa.fa-hotel 
+                      span &nbsp Ha Noi, Viet Nam
+                  li 
+                    .result-item
+                      i.fa.fa-star
+                      span &nbsp Ha Noi Club, Viet Nam
+                  li 
+                    .result-item
+                      i.fa.fa-coffee
+                      span &nbsp Ha Noi Central, Viet Nam
+            .select-date
+              .start-date
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-calendar
+                  input.form-control#start-date-picker
+              //- .end-date
+              //-   .input-group
+              //-     span.input-group-addon
+              //-       i.fa.fa-calendar
+              //-     input.form-control#end-date-picker
+            .box-and-button      
+              .occupancy-box
+                i.box-icon.fa.fa-users
+                .box-results
+                  .box-people
+                    span.loading  
+                      span.adults-text 3 adults, 
+                      span.children-text 0 children
+                  .box-rooms
+                    span.loading  
+                      span.rooms 3 rooms
+                .occupancy-edit.popup-result
+                  .plusminusrow
+                    span.minus
+                      i.fa.fa-minus
+                    span.amount(data-amount="3") 3
+                    span.unit Rooms
+                    span.plus
+                      i.fa.fa-plus
+                  .plusminusrow
+                    span.minus
+                      i.fa.fa-minus
+                    span.amount(data-amount="3") 3
+                    span.unit Adults
+                    span.plus
+                      i.fa.fa-plus
+                  .plusminusrow
+                    span.minus
+                      i.fa.fa-minus
+                    span.amount(data-amount="0", data-allow-zero="true") 0
+                    span.unit Children
+                    span.plus
+                      i.fa.fa-plus
+              .search-button  
+                a.loading
+                  span.loading.search-text Search
+                .loader
         .search-result-backdrop
     section.tile-promotion
         .col-md-6.square-tile.loading
@@ -97,19 +122,25 @@ block script
       setTimeout(function() {
             $(".loading").removeClass("loading");
 
-            $('#start-date-picker').datetimepicker({
-                format: 'DD MMM YYYY',
-                defaultDate: moment()
+            $('#start-date-picker').daterangepicker({
+                "autoApply": true,
+                "startDate": moment(),
+                "endDate": moment().add(1, 'days')
+            }, function(start, end, label) {
             });
-            $('#end-date-picker').datetimepicker({
-                format: 'DD MMM YYYY',
-                defaultDate: moment().add(1, 'days')
-            });
+
             setAmounts();
         }, 3000)
 
       $('#destination-input').focus(function() {
         $('.destination-search-results').css('display', 'block');
+        $('.search-result-backdrop').css('display', 'block');
+        $('.occupancy-edit').css('display', 'none');
+      });
+
+      $('.occupancy-box').click(function() {
+        $('.occupancy-edit').css('display', 'block');
+        $('.destination-search-results').css('display', 'none');
         $('.search-result-backdrop').css('display', 'block');
       });
 
@@ -128,4 +159,43 @@ block script
         setTimeout(function() {
             location.href = "/search";
         }, 2500);
+      })
+
+      function setSpanText(unit, amount) {
+        if (unit === 'Adults') {
+            $('span.adults-text').text(amount + ' adults, ');
+          } else if (unit === 'Children') {
+            $('span.children-text').text(amount + ' children');
+          } else {
+            $('span.rooms').text(amount + ' rooms');
+          }
+      }
+
+      $('span.minus').click(function() {
+        var $amount = $(this).siblings('.amount');
+        var $unit = $(this).siblings('.unit');
+
+        var amount = $amount.attr('data-amount');
+        var allowZero = $amount.attr('data-allow-zero');
+        var unit = $unit.text();
+        if (amount > 1 || ( allowZero && amount == 1)) {
+          amount--;
+          $amount.attr('data-amount', amount);
+          $amount.text(amount);
+
+          setSpanText(unit, amount);
+        };
+      })
+      $('span.plus').click(function() {
+        var $amount = $(this).siblings('.amount');
+        var $unit = $(this).siblings('.unit');
+
+        var amount = $amount.attr('data-amount');
+        var unit = $unit.text();
+
+        amount++;
+        $amount.attr('data-amount', amount);
+        $amount.text(amount);
+
+        setSpanText(unit, amount);
       })

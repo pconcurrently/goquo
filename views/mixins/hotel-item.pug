@@ -27,7 +27,7 @@ mixin hotel-item(hotel)
                     i.fa.fa-certificate
                     span &nbsp Excellent location
                     span &nbsp (Inside city center)
-                .offers
+                .offers(data-toggle="tooltip", title="Some deals include: Free Wheel Chair, Free Moon")
                     .offers-title 
                         strong Offers
                     ul.offers-items
@@ -39,7 +39,7 @@ mixin hotel-item(hotel)
                             i.fa.fa-moon-o
                             span
                                 strong &nbsp Free Moon
-                .options
+                .options(data-toggle="tooltip", title="Booking includes: Free cancellation, Pay later")
                     .options-title 
                         strong Options
                     ul.options-items
@@ -53,18 +53,18 @@ mixin hotel-item(hotel)
                                 strong &nbsp Pay later
                 .services
                     ul.list-services
-                        li 
+                        li(data-toggle="tooltip", title="Hotel facility: Automobile")
                             i.fa.fa-automobile
-                        li 
+                        li(data-toggle="tooltip", title="Hotel facility: Gamepad")
                             i.fa.fa-gamepad
-                        li 
+                        li(data-toggle="tooltip", title="Hotel facility: Motorcycle")
                             i.fa.fa-motorcycle
-                        li 
+                        li(data-toggle="tooltip", title="Hotel facility: Wifi")
                             i.fa.fa-wifi
             .detail-right.col-sm-4
                 .review
-                    div Excellent
-                    div 114 reviews
+                    div= hotel.ratingComment
+                    div= hotel.numberReviews + " reviews"
                 .rating-container
                     .triangle-pointer
                     .rating-square 

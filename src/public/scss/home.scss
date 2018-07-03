@@ -17,44 +17,56 @@
         opacity: 0;
     }
     img.sticky-image {
+        display: block;
         position: fixed;
         bottom: 0;
         left: 0;
+        width: 65%;
     }
-    @media screen and (max-width: 1499px) {
-        img.sticky-image {
-            width: 65%;
-            opacity: 1;
-        }
-    }
-    @media screen and (max-width: 992px) {
-        img.sticky-image {
-            opacity: 0;
-        }
-    }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
         img.sticky-image {
             width: 50%;
             opacity: 1;
         }
     }
+    @media screen and (max-width: 980px) {
+        img.sticky-image {
+           display: none;
+        }
+    }
     .tile-content-wrapper {
+        position: fixed;
         min-height: 700px;
         max-height: 100%;
+        width: 65%;
+        @media screen and (max-width: 980px) {
+            position: absolute;
+        }
+        @media screen and (min-width: 980px) {
+            position: fixed;
+        }
+        @media screen and (min-width: 1280px) {
+            width: 50%;
+        }
         height: calc(100vh - 60px);
+        display: table-cell;
+        vertical-align: middle;
     }
     .tile-content {
-        position: fixed;
-        top: 60px;
-        left: 60px;
-        display: table-cell;
+        max-width: 630px;
+        width: 580px;
+        margin: 0 auto;
     }
     .tile-promotion {
         position: relative; // left: -10px;
         // right: 10px;
         display: table-cell;
         vertical-align: middle;
-        width: 50%;
+        width: 35%;
+
+        @media screen and (min-width: 1280px) {
+            width: 50%;
+        }
         padding: 30px 0;
         color: #fff;
         .btn {
@@ -73,11 +85,16 @@
             }
         }
         .square-tile {
-            width: calc(50% - 10px);
+            width: calc(100% - 10px);
+            height: calc(50% - 10px);
+            padding-top: 87%;
+            @media screen and (min-width: 1280px) {
+                width: calc(50% - 10px);
+                padding-top: 44%;
+            }
             background-color: #333;
             margin-right: 10px;
             margin-bottom: 10px;
-            padding-top: 44%;
             img {
                 display: block;
                 position: absolute;
@@ -150,7 +167,7 @@
         .destination-search-results {
             position: absolute;
             z-index: 3;
-            top: 90px;
+            top: 87px;
             background-color: #fff;
             width: 580px;
             display: none;
@@ -196,7 +213,7 @@
         margin-top: 20px;
         .start-date,
         .end-date {
-            width: 290px;
+            width: 580px;
             span {
                 background-color: #fff;
                 border: none;
@@ -222,12 +239,74 @@
             background-color: #fff;
             width: 380px;
             height: 75px;
+            position: relative;
             @extend .box-shadow;
+            cursor: pointer;
             .box-results {
                 padding: 16px 10px;
             }
             .box-icon {
                 padding: 30px 20px;
+            }
+            .occupancy-edit {
+                width: 380px;
+                position: absolute;
+                background: #fff;
+                padding: 10px 10px 8px;
+                top: 87px;
+                display: none;
+                &::before {
+                    top: -22px;
+                    left: 25px;
+                    right: auto;
+                    position: absolute;
+                    display: inline-block;
+                    content: "";
+                    border: 11px solid transparent;
+                    border-bottom-color: rgba(27, 31, 35, 0.15);
+                }
+                &::after {
+                    top: -20px;
+                    left: 26px;
+                    right: auto;
+                    border: 10px solid transparent;
+                    border-bottom-color: #fff;
+                    position: absolute;
+                    display: inline-block;
+                    content: "";
+                }
+                .plusminusrow {
+                    width: 100%;
+                    position: relative;
+                    min-height: 40px;
+                    margin-bottom: 6px;
+                    .minus, .plus, .amount {
+                        color: $link_active;
+                    }
+                    .minus {
+                        position: absolute;
+                        left: 0;
+                        top: 5px;
+                        cursor: pointer;
+                    }
+                    .plus {
+                        position: absolute;
+                        right: 0;
+                        top: 5px;
+                        cursor: pointer;
+                    }
+                    .amount {
+                        position: absolute;
+                        right: 56%;
+                        top: 5px;
+                    }
+                    .unit {
+                        position: absolute;
+                        left: 45%;
+                        top: 5px;
+                    }
+                }
+
             }
         }
         .search-button {
