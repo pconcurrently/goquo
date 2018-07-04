@@ -46,6 +46,10 @@ ul.map-hotel-items {
                     display: block;
                 }
             }
+            .more-detail {
+                background-color: $link_active;
+                color: #fff !important;
+            }
         }
         .item-thumb {
             overflow: hidden;
@@ -65,6 +69,7 @@ ul.map-hotel-items {
         .item-description {
             width: calc(100% - 150px);
             padding: 0 12px;
+            position: relative;
             h4 {
                 margin: 6px 0;
             }
@@ -131,6 +136,19 @@ ul.map-hotel-items {
                     right: -20px;
                     top: -11px;
                 }
+            }
+            .more-detail {
+                border: solid 1px $link_active;
+                border-radius: 3px;
+                color: $link_active;
+                font-size: 12px;
+                font-weight: 400;
+                padding: 3px 6px;
+                transition: all .3s ease-in-out;
+                box-shadow: none;
+                position: absolute;
+                bottom: 10px;
+                right: 15px;
             }
         }
     }
