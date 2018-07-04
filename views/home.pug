@@ -1,6 +1,9 @@
 extends layout
-
+include mixins/square-tile
+include mixins/double-square-tile
 block content
+  - var item1 = {image: "images/promote1_background.png"}
+  - var doubleItem1 = {image: "images/promote2_background.jpg"}
   section.tile-container
     img.sticky-image(src="images/skyline.png")
     section.tile-content-wrapper
@@ -77,46 +80,14 @@ block content
                 .loader
         .search-result-backdrop
     section.tile-promotion
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
-        .col-md-12.double-square-tile.loading
-          img(src="images/promote2_background.jpg", style="width: 100%")
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
-        .col-md-12.double-square-tile.loading
-          img(src="images/promote2_background.jpg", style="width: 100%")
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
-        .col-md-6.square-tile.loading
-          .detail
-            h3 Drop prices up to 30%
-            small Sign in now for member-only deal
-            button.btn Sign in now
-          img(src="images/promote1_background.png")
+        +squareTile(item1)
+        +squareTile(item1)
+        +doubleSquareTile(doubleItem1)
+        +squareTile(item1)
+        +squareTile(item1)
+        +doubleSquareTile(doubleItem1)
+        +squareTile(item1)
+        +squareTile(item1)
 block script
   script.
       setTimeout(function() {
@@ -128,8 +99,6 @@ block script
                 "endDate": moment().add(1, 'days')
             }, function(start, end, label) {
             });
-
-            setAmounts();
         }, 3000)
 
       $('#destination-input').focus(function() {
