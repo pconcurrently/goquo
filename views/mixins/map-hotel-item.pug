@@ -1,7 +1,8 @@
 mixin mapHotelItem(item)
-    li
+    li.map-hotel-item
         .item-thumb
-            img(src=item.image)
+            img.image-1(src=item.image)
+            img.image-2(src=item.image2)
         .item-description
             h4= item.hotelName
             .rating-location

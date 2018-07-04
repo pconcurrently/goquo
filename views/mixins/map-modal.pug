@@ -1,21 +1,106 @@
 mixin mapModal()
   include map-hotel-item
-  - var item1 = {image: "images/map-hotel-1.jpg", hotelName: "THE Hotel", rating: 8.3, ratingComment: "Excellent"}
-  - var item2 = {image: "images/map-hotel-2.jpg", hotelName: "ABC Hotel", rating: 7.3, ratingComment: "Very Good"}
-  - var item3 = {image: "images/map-hotel-3.jpg", hotelName: "Grand Hotel", rating: 7.1, ratingComment: "Very Good"}
-  - var item4 = {image: "images/map-hotel-4.jpg", hotelName: "NO Hotel", rating: 8.1, ratingComment: "Excellent"}
+  - var item1 = {image: "images/map-hotel-1.jpg", image2: "images/map-hotel-5.jpg", hotelName: "THE Hotel", rating: 8.3, ratingComment: "Excellent"}
+  - var item2 = {image: "images/map-hotel-2.jpg", image2: "images/map-hotel-6.jpg", hotelName: "ABC Hotel", rating: 7.3, ratingComment: "Very Good"}
+  - var item3 = {image: "images/map-hotel-3.jpg", image2: "images/map-hotel-7.jpg", hotelName: "Grand Hotel", rating: 7.1, ratingComment: "Very Good"}
+  - var item4 = {image: "images/map-hotel-4.jpg", image2: "images/map-hotel-8.jpg", hotelName: "NO Hotel", rating: 8.1, ratingComment: "Excellent"}
   #map-modal.modal.fade(role='dialog')
       .map-modal.modal-dialog.modal-lg
           // Modal content
           .modal-content
             .modal-body
-              .row  
-                .col-md-5.scrollable-list
-                  ul.map-hotel-items
-                    +mapHotelItem(item1)
-                    +mapHotelItem(item2)
-                    +mapHotelItem(item3)
-                    +mapHotelItem(item4)
-                .col-md-7
-                  .google-map-container#google-map
+              .map-header
+                .filters-container-root
+                  .filters-container
+                    ul.filters-list
+                      li.filter-item.filter-item__hoverable
+                        .title
+                          span Star rating
+                        .checkbox
+                          input(type="checkbox" id="st1" value="1") 
+                          label(for='st1')
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span &nbsp (5)
+                        .checkbox
+                          input(type="checkbox" id="st2" value="2") 
+                          label(for='st2')
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span &nbsp (7)
+                        .checkbox
+                          input(type="checkbox" id="st3" value="3") 
+                          label(for='st3')
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span &nbsp (15)
+                        .checkbox
+                          input(type="checkbox" id="st4" value="4") 
+                          label(for='st4')
+                            i.fa.fa-star
+                            i.fa.fa-star
+                            span &nbsp (23)
+                        .checkbox
+                          input(type="checkbox" id="st5" value="5") 
+                          label(for='st5')
+                            i.fa.fa-star
+                            span &nbsp (10)
+                        .checkbox
+                          input(type="checkbox" id="st6" value="5") 
+                          label(for='st6')
+                            span No rating (3)
+                        .dots.loading
+                          span ...
+                      li.filter-item.filter-item__hoverable
+                        .title
+                          span Guess rating
+                        .checkbox
+                          input(type="radio" name="location" id="lc1" value="1") 
+                          label(for='lc1')
+                            span 9+ Exceptional location (4)
+                        .checkbox
+                          input(type="radio" name="location" id="lc2" value="2") 
+                          label(for='lc2')
+                            span 8+ Excellent location (7)
+                        .checkbox
+                          input(type="radio" name="location" id="lc3" value="3" checked) 
+                          label(for='lc3')
+                          span 7+ Very good location (14)
+                        .dots.loading
+                          span ...
+                      li.filter-item.filter-item__hoverable
+                        .title
+                          span Neighborhood
+                        .checkbox
+                          input(type="checkbox" id="st6" value="1") 
+                          label(for='st6') Old Quarter (5)
+                        .checkbox
+                          input(type="checkbox" id="st7" value="2") 
+                          label(for='st7') Hoan Kiem District (7)
+                        .checkbox
+                          input(type="checkbox" id="st8" value="3") 
+                          label(for='st8') Ba Dinh District (11)
+                        .checkbox
+                          input(type="checkbox" id="st9" value="4") 
+                          label(for='st9') Trung Hoa Nhan Chinh (2)
+                        .dots.loading
+                          span ...
+              .map-body
+                .row  
+                  .col-md-5.scrollable-list
+                    .sort-by
+                      h4 5 properties are available
+                    ul.map-hotel-items
+                      +mapHotelItem(item1)
+                      +mapHotelItem(item2)
+                      +mapHotelItem(item3)
+                      +mapHotelItem(item4)
+                  .col-md-7
+                    .google-map-container#google-map
       
